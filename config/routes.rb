@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "home/index"
+  #get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,12 +13,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  namespace :api do
-    namespace :v1 do
-      resources :treinos, only: [:index, :create, :update, :destroy]
-    end
-  end
-
-  # Define a rota raiz para o frontend (PWA)
-  root 'home#index'
+  resources :treinos, only: [:index, :create]
+  root "treinos#index" # Define a rota raiz para o TreinosController#index
 end

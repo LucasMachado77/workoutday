@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         
         // Verifica se pelo menos um dia foi selecionado
-        const diasSelecionados = Array.from(document.querySelectorAll('input[name="dia"]:checked')).map(checkbox => checkbox.value);
-        
-        if (diasSelecionados.length > 0) {
-            // Mostra a seção para inserir o treino
-            treinoInfo.style.display = 'block';
-        } else {
-            alert('Por favor, selecione pelo menos um dia da semana.');
-        }
+        treinoForm.addEventListener('submit', function(event) {
+            const diasSelecionados = Array.from(document.querySelectorAll('input[name="treino[dias_semana][]"]:checked')).map(checkbox => checkbox.value);
+    
+            if (diasSelecionados.length === 0) {
+                alert('Por favor, selecione pelo menos um dia da semana.');
+                event.preventDefault(); // Impede o envio do formulário
+            }
     });
+});
 
     window.salvarTreino = function() {
         const treino = treinoInput.value.trim();

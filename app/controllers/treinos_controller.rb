@@ -1,53 +1,44 @@
 class TreinosController < ApplicationController
-    before_action :set_treino, only: [:update, :destroy]
-
   def index
-    @treinos = Treino.all
-    render json: @treinos
+    @treinos = Treino.all.order(created_at: :desc) # Ordena por data de criação (mais recente primeiro)
+    @treino = Treino.new
   end
 
   def create
-    dias_semana = params[:treino][:dias_semana]
-    tipo_treino = params[:treino][:tipo_treino]
-  
-    if dias_semana.blank? || tipo_treino.blank?
-      render json: { error: 'Dias da semana e tipo de treino são obrigatórios.' }, status: :unprocessable_entity
+ 
+
+    # Verifica se params[:treino] existe
+    if params[:treino].nil?
+      flash[:alert] = 'Por favor, selecione pelo menos um dia e um treino.'
+      redirect_to treinos_path
       return
     end
-  
+
+    # Obtém os dias e treinos selecionados
+    dias_semana = params[:treino][:dias_semana] || []
+    tipos_treino = params[:treino][:tipos_treino] || []
+
+    # Verifica se pelo menos um dia e um treino foram selecionados
+    if dias_semana.empty? || tipos_treino.empty?
+      flash[:alert] = 'Por favor, selecione pelo menos um dia e um treino.'
+      redirect_to treinos_path
+      return
+    end
+
     begin
-      # Cria um registro para cada dia selecionado
       dias_semana.each do |dia|
-        Treino.create!(dia_semana: dia, tipo_treino: tipo_treino)
+        # Salva todos os treinos selecionados como uma única entrada
+        Treino.create!(
+          dia_semana: dia,
+          tipo_treino: tipos_treino.join(', ') # Junta os treinos em uma única string
+        )
       end
-  
-      render json: { message: 'Treinos salvos com sucesso!' }, status: :created
+
+      flash[:notice] = 'Treinos salvos com sucesso!'
+      redirect_to treinos_path
     rescue => e
-      render json: { error: "Erro ao salvar treinos: #{e.message}" }, status: :internal_server_error
+      flash[:alert] = "Erro ao salvar treinos: #{e.message}"
+      redirect_to treinos_path
     end
   end
-
-  def update
-    if @treino.update(treino_params)
-      render json: @treino
-    else
-      render json: @treino.errors, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @treino.destroy
-    head :no_content
-  end
-
-  private
-
-  def set_treino
-    @treino = Treino.find(params[:id])
-  end
-
-  def treino_params
-    params.require(:treino).permit(dias_semana: [], tipo_treino: [])
-  end
-
 end
