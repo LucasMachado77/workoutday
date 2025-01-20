@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Aumentei a largura para caber os dias na horizontal */
+    max-width: 600px; /* Limite máximo de largura */
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.dias-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaço entre os dias */
+    margin-bottom: 20px;
+}
+
+.dia-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#treinoInfo {
+    margin-top: 20px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+}
