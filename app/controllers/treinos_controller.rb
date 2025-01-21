@@ -46,9 +46,10 @@ class TreinosController < ApplicationController
     last_treino = Treino.last
     if last_treino
       last_treino.destroy
-      render json: { success: true, message: "Último treino removido com sucesso." }
+      flash[:notice] = "Último treino removido com sucesso."
     else
-      render json: { success: false, message: "Nenhum treino para remover." }
+      flash[:alert] = "Nenhum treino para remover."
     end
+    redirect_to treinos_path
   end
 end
