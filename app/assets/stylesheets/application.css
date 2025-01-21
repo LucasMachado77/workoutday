@@ -1,3 +1,15 @@
+/*
+Cores Primárias:
+Azul Energia (Confiança e Estabilidade): #007BFF
+Laranja Motivação (Energia e Ação): #FF6F00
+Cores Secundárias:
+Cinza Claro (Equilíbrio e Sofisticação): #F4F4F4
+Cinza Escuro (Estilo Moderno e Neutro): #404040
+Cores de Destaque:
+Branco (Limpeza e Simplicidade): #FFFFFF
+Preto (Contraste e Foco): #000000
+*/
+
 /* Container principal */
 body {
     font-family: Arial, sans-serif;
@@ -8,8 +20,9 @@ body {
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
-}
 
+    background-image: url('background.jpg');
+}
 
 
 
@@ -24,16 +37,18 @@ body {
     text-align: center;
 }
 
+
+
 h1 {
     margin-bottom: 20px;
     font-size: 24px; /* Tamanho original */
-    color: #333;
+    color: #007BFF;
     font-weight: bold;
 }
 
 h2 {
     font-size: 20px; /* Tamanho original */
-    color: #444;
+    color: #007BFF;
     margin-bottom: 15px;
 }
 
@@ -56,7 +71,7 @@ h2 {
 }
 
 #historico th {
-    background-color: #28a745;
+    background-color: #007BFF; /* Azul Energia */
     color: white;
     font-weight: bold;
 }
@@ -66,7 +81,7 @@ h2 {
 }
 
 #historico tr:hover {
-    background-color: #f1f1f1;
+    background-color: #FFEBCC; /* Laranja suave para destaque */
 }
 
 
@@ -75,7 +90,7 @@ h2 {
 button {
     margin-top: 10px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #28a745, #218838);
+    background: linear-gradient(135deg, #007BFF, #0056b3);
     color: white;
     border: none;
     border-radius: 25px; /* Bordas mais arredondadas */
@@ -87,7 +102,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #218838, #28a745);
+    background: linear-gradient(135deg, #0056b3, #007BFF); /* Reversão dos tons */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px); /* Efeito de levantar o botão */
 }
@@ -102,10 +117,10 @@ button:active {
 /*  Estilização dos Checkboxes */
 .dia-item input[type="checkbox"],
 .treino-item input[type="checkbox"] {
-    appearance: none; /* Remove o estilo padrão */
+    appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid #28a745;
+    border: 2px solid #007BFF;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
@@ -114,8 +129,8 @@ button:active {
 
 .dia-item input[type="checkbox"]:checked,
 .treino-item input[type="checkbox"]:checked {
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #FF6F00; /* Laranja Motivação */
+    border-color: #FF6F00;
 }
 
 .dia-item input[type="checkbox"]:checked::after,
@@ -127,14 +142,6 @@ button:active {
     transform: translate(-50%, -50%);
     color: white;
     font-size: 12px;
-}
-
-.dia-item label,
-.treino-item label {
-    margin-left: 8px;
-    font-size: 16px;
-    color: #333;
-    cursor: pointer;
 }
 
 .dias-container {
@@ -168,6 +175,31 @@ button:active {
 }
 
 
+.dia-item label,
+.treino-item label {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+
+
+/*  Estilização Empresa */
+#lucas {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    font-family: "Courier New", monospace; /* Usar uma fonte de desenvolvedor (monospace) */
+    margin: 10px 0 5px 0;  /* Margem superior, direita, baixo, esquerda. */
+  }
+  
+  #lucas span {
+    font-weight: bold;
+  }
+
+
 
 /*  Estilização das Mensagens de Alerta */
 
@@ -179,15 +211,15 @@ button:active {
 }
 
 .alert-danger {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
+    background-color: #FFEBCC; /* Laranja suave */
+    border: 1px solid #FF6F00; /* Laranja Motivação */
+    color: #994800;
 }
 
 .alert-success {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
+    background-color: #CCE5FF; /* Azul suave */
+    border: 1px solid #007BFF; /* Azul Energia */
+    color: #003580;
 }
 
 /* Estilos para telas menores (mobile) */

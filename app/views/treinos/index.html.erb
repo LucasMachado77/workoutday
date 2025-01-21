@@ -6,6 +6,7 @@
     <title>WorkOutDay</title>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'year' %>
 </head>
 <body>
     <div class="container">
@@ -76,21 +77,46 @@
                     <%= form.label "Tríceps" %>
                 </div>
                 <div class="treino-item">
-                    <%= form.check_box :tipos_treino, { multiple: true }, "Perna", nil %>
-                    <%= form.label "Perna" %>
-                </div>
-                <div class="treino-item">
                     <%= form.check_box :tipos_treino, { multiple: true }, "Ombro", nil %>
                     <%= form.label "Ombro" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Perna", nil %>
+                    <%= form.label "Perna" %>
                 </div>
                 <div class="treino-item">
                     <%= form.check_box :tipos_treino, { multiple: true }, "Quadríceps", nil %>
                     <%= form.label "Quadríceps" %>
                 </div>
                 <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Posterior", nil %>
+                    <%= form.label "Posterior" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Glúteo", nil %>
+                    <%= form.label "Glúteo" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Panturrilha", nil %>
+                    <%= form.label "Panturrilha" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Abdominal", nil %>
+                    <%= form.label "Abdominal" %>
+                </div>
+                <div class="treino-item">
                     <%= form.check_box :tipos_treino, { multiple: true }, "Full Body", nil %>
                     <%= form.label "Full Body" %>
                 </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Cardio", nil %>
+                    <%= form.label "Cardio" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Rest Day", nil %>
+                    <%= form.label "Rest Day" %>
+                </div>
+
             </div>
 
             <button class="button">Registrar Treino</button>
@@ -120,6 +146,12 @@
             <% else %>
                 <p>Nenhum treino registrado ainda.</p>
             <% end %>
+        </div>
+
+
+        <!-- Rodapé -->
+        <div id="lucas">
+            Lucas Machado™ - Inovações Tecnológicas. &copy; <span id="year"></span>
         </div>
     </div>
 </body>
