@@ -99,6 +99,7 @@ button {
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    justify-content: space-between;
 }
 
 button:hover {
@@ -111,7 +112,6 @@ button:active {
     transform: translateY(0); /* Efeito de pressionar o botão */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 
 /*  Estilização dos Checkboxes */

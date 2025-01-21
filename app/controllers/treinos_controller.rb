@@ -41,4 +41,14 @@ class TreinosController < ApplicationController
       redirect_to treinos_path
     end
   end
+
+  def remove_last
+    last_treino = Treino.last
+    if last_treino
+      last_treino.destroy
+      render json: { success: true, message: "Último treino removido com sucesso." }
+    else
+      render json: { success: false, message: "Nenhum treino para remover." }
+    end
+  end
 end

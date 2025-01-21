@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
-  resources :treinos, only: [:index, :create]
+  resources :treinos, only: [:index, :create] do
+    collection do
+      delete :remove_last # Rota para remover o último treino
+    end
+  end
   root "treinos#index" # Define a rota raiz para o TreinosController#index
 end

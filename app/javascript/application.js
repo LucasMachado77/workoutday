@@ -65,3 +65,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const removeLastTreinoButton = document.getElementById('removeLastTreinoButton');
+  
+    if (removeLastTreinoButton && !removeLastTreinoButton.dataset.listenerAdded) {
+      removeLastTreinoButton.dataset.listenerAdded = true; // Marca o botão como "com listener"
+  
+      removeLastTreinoButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Impede o comportamento padrão do botão
+  
+        // Confirmação antes de enviar a requisição
+        if (confirm('Tem certeza que deseja remover o último treino?')) {
+          // Desabilita o botão para evitar múltiplos cliques
+          removeLastTreinoButton.disabled = true;
+  
+          // Envia a requisição DELETE para o backend
+          fetch(removeLastTreinoButton.dataset.url, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+            }
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert(data.message); // Exibe a mensagem de sucesso
+                removeLastRowFromTable(); // Remove a última linha da tabela
+              } else {
+                alert(data.message); // Exibe a mensagem de erro
+              }
+            })
+            .catch(error => {
+              console.error('Erro:', error);
+              alert('Erro ao remover o último treino.');
+            })
+            .finally(() => {
+              // Reabilita o botão após a requisição
+              removeLastTreinoButton.disabled = false;
+            });
+        }
+      });
+    }
+  
+    // Função para remover a última linha da tabela
+    function removeLastRowFromTable() {
+      const table = document.querySelector('table tbody');
+      const rows = table.querySelectorAll('tr');
+  
+      if (rows.length > 0) {
+        table.removeChild(rows[0]); // Remove a última linha
+      }
+    }
+  });
