@@ -1,24 +1,16 @@
-# README
+# WORKOUT DAY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O **workout Day** é um aplicativo desenvolvido para registrar e acompanhar seus treinos de academia. Ele permite que você registre o tipo de treino que você realizou, as atividades realizadas e o seu progresso ao longo do tempo.
 
-Things you may want to cover:
+## Funcionalidades
 
-* Ruby version
+- **Registro de Treinos:** Permite registrar os tipos de treino (ex: musculação, aeróbico, etc.) e as atividades realizadas em cada sessão.
+- **Acompanhamento de Progresso:** Monitore seu histórico de treinos e veja seu progresso.
+- **Personalização de Tipos de Treino:** Adicione novos tipos de treino para personalizar a experiência.
+- **Interface Simples e Intuitiva:** O app foi projetado para ser fácil de usar, com uma interface clara e acessível.
 
-* System dependencies
+## Tecnologias Utilizadas
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- **Frontend:** []
+- **Backend:** [Ruby]
+- **Banco de Dados:** SQLite
