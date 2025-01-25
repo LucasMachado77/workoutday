@@ -1,17 +1,3 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
-# Configure Using Gemfile
-# gem "pg"
-#
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -20,7 +6,7 @@ default: &default
 development:
   <<: *default
   database: workoutday_development
-  host: 172.17.0.2  # Substitua pelo nome do seu container PostgreSQL
+  host: 172.17.0.2  # Substitua pelo nome do seu container PostgreSQL, se necessário
   port: 5432
   username: postgres  # Caso o usuário seja o padrão do PostgreSQL
   password: password  # Se você tiver configurado uma senha para o PostgreSQL
@@ -35,26 +21,8 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
-  port: 5432
+  # Aqui usamos a DATABASE_URL fornecida pelo Render para simplificar a configuração
+  url: <%= ENV['DATABASE_URL'] %>
   pool: 5
   timeout: 5000
-  sslmode: require # Isso garante que a conexão seja feita via SSL
-
-  cache:
-    <<: *default
-    database: workoutday_production_cache
-    migrations_paths: db/cache_migrate
-
-  queue:
-    <<: *default
-    database: workoutday_production_queue
-    migrations_paths: db/queue_migrate
-
-  cable:
-    <<: *default
-    database: workoutday_production_cable
-    migrations_paths: db/cable_migrate
+  sslmode: require # Garantir que a conexão seja feita via SSL
