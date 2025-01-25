@@ -35,11 +35,14 @@ test:
 
 production:
   <<: *default
-  database: workoutday_production
-  username: workoutday
-  password: <%= ENV['DATABASE_PASSWORD'] %>  # Use uma variável de ambiente para a senha
-  host: dpg-cuacnm9opnds73ebq6mg-a.frankfurt-postgres.render.com
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
   port: 5432
+  pool: 5
+  timeout: 5000
+  sslmode: require # Isso garante que a conexão seja feita via SSL
 
   cache:
     <<: *default
