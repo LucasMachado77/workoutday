@@ -89,11 +89,13 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: workoutday_production
-    username: workoutday
-    password: <%= ENV["WORKOUTDAY_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  database: workoutday_production
+  username: workoutday
+  password: EBdnx41r8jRZjP17Pf9p27yByrJvgfStT
+  host: dpg-cuacnm9opnds73ebq6mg-a.frankfurt-postgres.render.com
+  port: 5432
   cache:
     <<: *primary_production
     database: workoutday_production_cache
