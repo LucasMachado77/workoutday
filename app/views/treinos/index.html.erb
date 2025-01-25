@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkOutDay</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'year' %>
+</head>
+<body>
+    <div class="container">
+    <h1>Workout Day</h1>
+        <% if flash[:alert].present? %>
+            <div class="alert alert-danger">
+                <%= flash[:alert] %>
+            </div>
+        <% end %>
+
+        <% if flash[:notice].present? %>
+            <div class="alert alert-success">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+
+        <%= form_with model: @treino, url: treinos_path, method: :post, local: true do |form| %>
+            <div class="dias-container">
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Segunda-feira", nil %>
+                    <%= form.label "Segunda-feira" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Terça-feira", nil %>
+                    <%= form.label "Terça-feira" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Quarta-feira", nil %>
+                    <%= form.label "Quarta-feira" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Quinta-feira", nil %>
+                    <%= form.label "Quinta-feira" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Sexta-feira", nil %>
+                    <%= form.label "Sexta-feira" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Sábado", nil %>
+                    <%= form.label "Sábado" %>
+                </div>
+                <div class="dia-item">
+                    <%= form.check_box :dias_semana, { multiple: true }, "Domingo", nil %>
+                    <%= form.label "Domingo" %>
+                </div>
+            </div>
+
+            
+            <h1>Treinou o que hoje?</h1>
+
+            <div class="treinos-container">
+                
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Peito", nil %>
+                    <%= form.label "Peito" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Costas", nil %>
+                    <%= form.label "Costas" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Bíceps", nil %>
+                    <%= form.label "Bíceps" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Tríceps", nil %>
+                    <%= form.label "Tríceps" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Ombro", nil %>
+                    <%= form.label "Ombro" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Perna", nil %>
+                    <%= form.label "Perna" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Quadríceps", nil %>
+                    <%= form.label "Quadríceps" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Posterior", nil %>
+                    <%= form.label "Posterior" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Glúteo", nil %>
+                    <%= form.label "Glúteo" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Panturrilha", nil %>
+                    <%= form.label "Panturrilha" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Abdominal", nil %>
+                    <%= form.label "Abdominal" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Full Body", nil %>
+                    <%= form.label "Full Body" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Cardio", nil %>
+                    <%= form.label "Cardio" %>
+                </div>
+                <div class="treino-item">
+                    <%= form.check_box :tipos_treino, { multiple: true }, "Rest Day", nil %>
+                    <%= form.label "Rest Day" %>
+                </div>
+
+            </div>
+
+            <button class="button">Registrar Treino</button>
+            <button id="removeLastTreinoButton" type="button" class="btn btn-danger" data-url="<%= remove_last_treinos_path %>">Remover Último Treino</button>
+            
+        <% end %>
+        
+
+        <div id="historico">
+            <h2>Histórico de Treinos</h2>
+            <% if @treinos.present? %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dia da Semana</th>
+                            <th>Tipo de Treino</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @treinos.each do |treino| %>
+                            <tr>
+                                <td><%= treino.dia_semana %></td>
+                                <td><%= treino.tipo_treino %></td>
+                                <td><%= treino.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% else %>
+                <p>Nenhum treino registrado ainda.</p>
+            <% end %>
+        </div>
+
+
+        <!-- Rodapé -->
+        <div id="lucas">
+            Lucas Machado™ - Inovações Tecnológicas. &copy; <span id="year"></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+/*
+Cores Primárias:
+Azul Energia (Confiança e Estabilidade): #007BFF
+Laranja Motivação (Energia e Ação): #FF6F00
+Cores Secundárias:
+Cinza Claro (Equilíbrio e Sofisticação): #F4F4F4
+Cinza Escuro (Estilo Moderno e Neutro): #404040
+Cores de Destaque:
+Branco (Limpeza e Simplicidade): #FFFFFF
+Preto (Contraste e Foco): #000000
+*/
+
+/* Container principal */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+
+    background-image: url('background.jpg');
+}
+
+
+
+/* Container e titulos */
+.container {
+    background-color: #fff;
+    padding: 20px; /* Mantendo o padding original */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Mantendo a largura original */
+    max-width: 600px; /* Mantendo o limite máximo de largura */
+    text-align: center;
+}
+
+
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Tamanho original */
+    color: #007BFF;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px; /* Tamanho original */
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+
+
+/* Histórico */
+#historico table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#historico th, #historico td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#historico th {
+    background-color: #007BFF; /* Azul Energia */
+    color: white;
+    font-weight: bold;
+}
+
+#historico tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#historico tr:hover {
+    background-color: #FFEBCC; /* Laranja suave para destaque */
+}
+
+
+
+/* Botões */
+button {
+    margin-top: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 25px; /* Bordas mais arredondadas */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    justify-content: space-between;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0056b3, #007BFF); /* Reversão dos tons */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* Efeito de levantar o botão */
+}
+
+button:active {
+    transform: translateY(0); /* Efeito de pressionar o botão */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/*  Estilização dos Checkboxes */
+.dia-item input[type="checkbox"],
+.treino-item input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #007BFF;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.dia-item input[type="checkbox"]:checked,
+.treino-item input[type="checkbox"]:checked {
+    background-color: #FF6F00; /* Laranja Motivação */
+    border-color: #FF6F00;
+}
+
+.dia-item input[type="checkbox"]:checked::after,
+.treino-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+.dias-container {
+    display: flex;
+    flex-wrap: wrap; /* Impede a quebra de linha */
+    gap: 10px; /* Espaço entre os itens */
+    margin-bottom: 20px;
+    /*overflow-x: auto; /* Adiciona scroll horizontal se necessário */
+    justify-content: center; /* Centraliza os itens */
+}
+
+.dia-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Impede a quebra de texto */
+}
+
+.treinos-container {
+    display: flex;
+    flex-wrap: wrap; /* Impede a quebra de linha */
+    gap: 10px; /* Espaço entre os itens */
+    margin-bottom: 20px;
+    /*overflow-x: auto;  Adiciona scroll horizontal se necessário */
+    justify-content: center; /* Centraliza os itens */
+}
+
+.treino-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Impede a quebra de texto */
+}
+
+
+.dia-item label,
+.treino-item label {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+
+
+/*  Estilização Empresa */
+#lucas {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    font-family: "Courier New", monospace; /* Usar uma fonte de desenvolvedor (monospace) */
+    margin: 10px 0 5px 0;  /* Margem superior, direita, baixo, esquerda. */
+  }
+  
+  #lucas span {
+    font-weight: bold;
+  }
+
+
+
+/*  Estilização das Mensagens de Alerta */
+
+.alert {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.alert-danger {
+    background-color: #FFEBCC; /* Laranja suave */
+    border: 1px solid #FF6F00; /* Laranja Motivação */
+    color: #994800;
+}
+
+.alert-success {
+    background-color: #CCE5FF; /* Azul suave */
+    border: 1px solid #007BFF; /* Azul Energia */
+    color: #003580;
+}
+
+/* Estilos para telas menores (mobile) */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Ocupa toda a largura da tela */
+        padding: 10px; /* Reduz o padding */
+        border-radius: 0; /* Remove bordas arredondadas para aproveitar o espaço */
+        box-shadow: none; /* Remove sombra para um visual mais limpo */
+    }
+
+    h1 {
+        font-size: 24px; /* Reduz o tamanho do título */
+        margin-bottom: 10px; /* Reduz o espaçamento */
+    }
+
+    h2 {
+        font-size: 18px; /* Reduz o tamanho do subtítulo */
+        margin-bottom: 10px; /* Reduz o espaçamento */
+    }
+
+    .dias-container, .treinos-container {
+        gap: 5px; /* Reduz o espaço entre os checkboxes */
+        margin-bottom: 10px; /* Reduz o espaçamento */
+    }
+
+    .dia-item, .treino-item {
+        flex: 1 1 45%; /* Mantém os itens em duas colunas */
+        white-space: normal; /* Permite que o texto quebre */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 8px 16px; /* Reduz o padding do botão */
+        font-size: 14px; /* Reduz o tamanho da fonte do botão */
+    }
+}
+
+/* Estilos para telas menores (mobile) */
+@media (max-width: 390px) {
+    .container {
+        width: 100%; /* Ocupa toda a largura da tela */
+        padding: 8px; /* Reduz o padding */
+        border-radius: 0; /* Remove bordas arredondadas para aproveitar o espaço */
+        box-shadow: none; /* Remove sombra para um visual mais limpo */
+    }
+
+    h1 {
+        font-size: 20px; /* Reduz o tamanho do título */
+        margin-bottom: 8px; /* Reduz o espaçamento */
+    }
+
+    h2 {
+        font-size: 16px; /* Reduz o tamanho do subtítulo */
+        margin-bottom: 8px; /* Reduz o espaçamento */
+    }
+
+    .dias-container, .treinos-container {
+        gap: 4px; /* Reduz o espaço entre os checkboxes */
+        margin-bottom: 8px; /* Reduz o espaçamento */
+    }
+
+    .dia-item, .treino-item {
+        flex: 1 1 45%; /* Mantém os itens em duas colunas */
+        white-space: normal; /* Permite que o texto quebre */
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    button {
+        width: 100%;
+        margin-top: 8px;
+        padding: 6px 12px; /* Reduz o padding do botão */
+        font-size: 12px; /* Reduz o tamanho da fonte do botão */
+    }
+}
