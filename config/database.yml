@@ -8,15 +8,15 @@ development:
   database: workoutday_development
   host: 172.17.0.2  # Substitua pelo nome do seu container PostgreSQL, se necessário
   port: 5432
-  username: postgres  # Caso o usuário seja o padrão do PostgreSQL
-  password: password  # Se você tiver configurado uma senha para o PostgreSQL
+  username: postgres
+  password: password
 
 test:
   <<: *default
   database: workoutday_test
   host: 172.17.0.2  # Substitua pelo nome do seu container PostgreSQL
   port: 5432
-  username: postgres  # Caso o usuário seja o padrão do PostgreSQL
+  username: postgres
   password: password
 
 production:
@@ -25,13 +25,13 @@ production:
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: <%= ENV['DATABASE_HOST'] %>
-  url: <%= ENV['DATABASE_URL'] %>
-  port: 5432
+  port: <%= ENV['DATABASE_PORT'] || 5432 %>  # Pode ser uma variável de ambiente
   pool: 5
   timeout: 5000
   sslmode: require
 
+  # Configuração para o banco de dados do ActionCable
   cable:
     <<: *default
-    database: workoutday_production_cable
+    database: <%= ENV['CABLE_DATABASE_NAME'] || 'workoutday_production_cable' %>
     migrations_paths: db/cable_migrate
