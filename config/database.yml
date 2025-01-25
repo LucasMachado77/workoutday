@@ -30,8 +30,6 @@ production:
   timeout: 5000
   sslmode: require
 
-  # Configuração para o banco de dados do ActionCable
-  cable:
-    <<: *default
-    database: <%= ENV['CABLE_DATABASE_NAME'] || 'workoutday_production_cable' %>
-    migrations_paths: db/cable_migrate
+queue:
+  <<: *default
+  url: <%= ENV['QUEUE_DATABASE_URL'] %>
