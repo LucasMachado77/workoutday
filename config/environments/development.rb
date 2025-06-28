@@ -40,7 +40,7 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   config.hosts << "backend"
-  config.hosts << "192.168.56.10"
+  config.hosts << "web_backend"
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
